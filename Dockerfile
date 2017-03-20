@@ -8,11 +8,13 @@ ENV TEAMCITY_DATA_PATH=/data/teamcity_server/datadir \
 EXPOSE 8111
 LABEL dockerImage.teamcity.version="latest" \
       dockerImage.teamcity.buildNumber="latest"
-
+RUN /usr/bin/curl -O -L https://download.jetbrains.com/teamcity/TeamCity-10.0.5.tar.gz && \
+     mkdir dist && \
+     tar zxf TeamCity-10.0.5.tar.gz -C dist/ && \
+     mv dist/TeamCity /opt/teamcity
 COPY run-services.sh /run-services.sh
-COPY dist/teamcity $TEAMCITY_DIST
 RUN chmod +x /run-services.sh && \
-    mv /opt/teamcity/tomcat/webapps/ROOT /opt/teamcity/tomcat/webapps/teamcity
+    mv /opt/teamcity/webapps/ROOT /opt/teamcity/webapps/teamcity
 
 VOLUME $TEAMCITY_DATA_PATH \
        $TEAMCITY_LOGS

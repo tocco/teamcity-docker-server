@@ -10,8 +10,9 @@ LABEL dockerImage.teamcity.version="latest" \
       dockerImage.teamcity.buildNumber="latest"
 
 COPY run-services.sh /run-services.sh
-RUN chmod +x /run-services.sh
 COPY dist/teamcity $TEAMCITY_DIST
+RUN chmod +x /run-services.sh && \
+    mv /opt/teamcity/tomcat/webapps/ROOT /opt/teamcity/tomcat/webapps/teamcity
 
 VOLUME $TEAMCITY_DATA_PATH \
        $TEAMCITY_LOGS

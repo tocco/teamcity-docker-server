@@ -1,4 +1,4 @@
-FROM jetbrains/teamcity-base:latest
+FROM openjdk:8-jdk
 MAINTAINER Kateryna Shlyakhovetska <shkate@jetbrains.com>
 
 ENV TEAMCITY_DATA_PATH=/data/teamcity_server/datadir \

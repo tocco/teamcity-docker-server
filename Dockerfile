@@ -8,9 +8,9 @@ ENV TEAMCITY_DATA_PATH=/data/teamcity_server/datadir \
 EXPOSE 8111
 LABEL dockerImage.teamcity.version="latest" \
       dockerImage.teamcity.buildNumber="latest"
-RUN /usr/bin/curl -O -L https://download.jetbrains.com/teamcity/TeamCity-10.0.5.tar.gz && \
+RUN /usr/bin/curl -O -L https://download.jetbrains.com/teamcity/TeamCity-2017.1.2.tar.gz && \
      mkdir dist && \
-     tar zxf TeamCity-10.0.5.tar.gz -C dist/ && \
+     tar zxf TeamCity-2017.1.2.tar.gz -C dist/ && \
      mv dist/TeamCity /opt/teamcity
 COPY run-services.sh /run-services.sh
 RUN chmod +x /run-services.sh && \

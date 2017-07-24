@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk
+FROM openjdk:8
 MAINTAINER Kateryna Shlyakhovetska <shkate@jetbrains.com>
 
 ENV TEAMCITY_DATA_PATH=/data/teamcity_server/datadir \
@@ -13,8 +13,8 @@ RUN /usr/bin/curl -O -L https://download.jetbrains.com/teamcity/TeamCity-2017.1.
      tar zxf TeamCity-2017.1.2.tar.gz -C dist/ && \
      mv dist/TeamCity /opt/teamcity
 COPY run-services.sh /run-services.sh
-RUN chmod +x /run-services.sh && \
-    mv /opt/teamcity/webapps/ROOT /opt/teamcity/webapps/teamcity
+RUN chmod +x /run-services.sh
+#    mv /opt/teamcity/webapps/ROOT /opt/teamcity/webapps/teamcity
 
 VOLUME $TEAMCITY_DATA_PATH \
        $TEAMCITY_LOGS
